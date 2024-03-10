@@ -14,7 +14,7 @@ export class DatabaseClientRepository implements ClientRepository {
     let rows;
 
     if (search) {
-      rows = await sql`SELECT * FROM clients WHERE name LIKE ${`%${search}%`} LIMIT ${perPage} OFFSET ${offset}`;
+      rows = await sql`SELECT * FROM clients WHERE name LIKE ${`%${search}%`} OR email LIKE ${`%${search}%`} LIMIT ${perPage} OFFSET ${offset}`;
     } else {
       rows = await sql`SELECT * FROM clients LIMIT ${perPage} OFFSET ${offset}`;
     }

@@ -6,8 +6,8 @@ POST {{baseURL}}/clients/
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "johndoe@email.com.br",
+  "name": "John Doe 2",
+  "email": "johndoe2@email.com.br",
   "phone": "11999999999"
 }
 
