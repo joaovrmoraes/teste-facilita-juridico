@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ButtonHTMLAttributes } from "react";
 
 const variantColorMap = {
   default: "bg-blue-500 hover:bg-blue-400",
@@ -6,18 +6,22 @@ const variantColorMap = {
   danger: "bg-red-500 hover:bg-red-400",
 };
 
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "success" | "danger";
+  children: ReactNode;
+}
+
 export function Button({
   variant = "default",
   children,
-}: {
-  variant?: "default" | "success" | "danger";
-  children: ReactNode;
-}) {
+  ...props
+}: ButtonProps) {
   const colorClass = variantColorMap[variant];
 
   return (
     <button
       className={`rounded-md p-2 text-sm font-semibold text-white ${colorClass}`}
+      {...props}
     >
       {children}
     </button>

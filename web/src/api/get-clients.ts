@@ -7,13 +7,14 @@ interface getClientsProps {
 }
 
 export async function getClients({ search, page }: getClientsProps): Promise<Client[]> {
+  await new Promise(resolve => setTimeout(resolve, 2000)); // Adiciona um delay de 2 segundos
+
   const { data } = await api.get('/clients', {
     params: {
       search,
       page
     }
   })
-
 
   return data
 }

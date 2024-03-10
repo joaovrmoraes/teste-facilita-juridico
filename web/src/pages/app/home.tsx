@@ -1,47 +1,58 @@
-import { Search } from "lucide-react";
-import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
 import { useQuery } from "@tanstack/react-query";
 import { getClients } from "@/api/get-clients";
+import { formatPhoneNumber } from "@/utils/formatter";
+import { useForm, Controller } from "react-hook-form";
 
 export function Home() {
-  const { data: clients } = useQuery({
-    queryKey: ["clients"],
-    queryFn: () => getClients({}),
-  });
+  const { control, watch } = useForm();
 
-  console.log(clients);
+  const search = watch("search");
+
+  const { data: clients, isLoading } = useQuery({
+    queryKey: ["clients", search],
+    queryFn: () => getClients({
+      search,
+    }),
+  });
 
   return (
     <>
       <Header />
 
       <div className="flex h-full w-full flex-col gap-8 p-4">
-        <div className="flex max-w-sm gap-2">
-          <Input />
-          <Button>
-            <Search className="h-4 w-4" />
-          </Button>
-        </div>
+        <form className="flex max-w-sm gap-2">
+          <Controller
+            control={control}
+            name="search"
+            defaultValue={""}
+            render={({ field }) => <Input {...field} placeholder="Buscar cliente" />}
+          />
+        </form>
 
         <table className="w-full">
           <thead>
-            <tr>
-              <th className="text-start font-semibold">Nome</th>
+            <tr className="border-b">
+              <th className="p-4 text-start font-semibold">Nome</th>
               <th className="text-start font-semibold">E-mail</th>
               <th className="text-start font-semibold">Telefone</th>
             </tr>
           </thead>
           <tbody>
-            {clients &&
+            {
+              isLoading ? 
+              (<div>Carregando...</div>)
+              :
+              clients &&
               clients.map((client) => (
-                <tr key={client.email}>
-                  <td>{client.name}</td>
+                <tr key={client.email} className="border-b">
+                  <td className="p-4">{client.name}</td>
                   <td>{client.email}</td>
-                  <td>{client.phone}</td>
+                  <td>{client.phone && formatPhoneNumber(client.phone)}</td>
                 </tr>
-              ))}
+              ))
+            }
           </tbody>
         </table>
       </div>
