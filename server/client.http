@@ -1,0 +1,19 @@
+@baseURL = http://localhost:4000
+
+###
+# @name create-client
+POST {{baseURL}}/clients/
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@email.com.br",
+  "phone": "11999999999"
+}
+
+
+###
+# @name get-clients
+GET {{baseURL}}/clients/
+Content-Type: application/json
+
