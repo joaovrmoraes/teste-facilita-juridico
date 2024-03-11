@@ -20,6 +20,8 @@ Este projeto requer Docker, Node.js e um arquivo .env configurado para funcionar
 1. **Docker**: Certifique-se de ter o Docker instalado em sua máquina. Se não, você pode baixá-lo [aqui](https://www.docker.com/products/docker-desktop).
 2. **.env**: Copie o arquivo `.env.example` e renomeie para `.env`. Preencha as variáveis de ambiente conforme necessário.
 3. **Dependências**: Entre na pasta `server` e instale as dependências com `npm install`.
+3. **Dependências**: Entre na pasta `web` e instale as dependências com `npm install`.
+
 
 ### Rodando o Projeto
 
