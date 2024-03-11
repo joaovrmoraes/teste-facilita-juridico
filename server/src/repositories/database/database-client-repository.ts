@@ -75,13 +75,11 @@ export class DatabaseClientRepository implements ClientRepository {
 
     const distance = (a: Client, b: Client) => Math.sqrt(Math.pow(b.coordinates.x - a.coordinates.x, 2) + Math.pow(b.coordinates.y - a.coordinates.y, 2));
 
-    // Generate all permutations of the clients
     const permutations = permute(clients);
 
     let bestPath: Client[] = [];
     let bestDistance = Infinity;
 
-    // Calculate the total distance for each permutation and keep the shortest one
     for (let path of permutations) {
       path = [company, ...path, company];
       let totalDistance = 0;
