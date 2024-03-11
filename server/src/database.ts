@@ -15,7 +15,8 @@ export async function initializeDatabase() {
           id SERIAL PRIMARY KEY,
           name VARCHAR(100),
           email VARCHAR(100) UNIQUE,
-          phone VARCHAR(15)
+          phone VARCHAR(15),
+          coordinates POINT
       )`;
   }
 }

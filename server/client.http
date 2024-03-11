@@ -8,12 +8,20 @@ Content-Type: application/json
 {
   "name": "John Doe 2",
   "email": "johndoe2@email.com.br",
-  "phone": "11999999999"
+  "phone": "11999999999",
+  "cordinates": {
+    "x": 1,
+    "y": 2
+  }
 }
-
 
 ###
 # @name get-clients
 GET {{baseURL}}/clients/
+Content-Type: application/json
+
+###
+# @name routes
+GET {{baseURL}}/clients/routes
 Content-Type: application/json
 

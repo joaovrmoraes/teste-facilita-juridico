@@ -1,4 +1,6 @@
 import { Button } from "./button";
+import * as Dialog from "@radix-ui/react-dialog";
+import { NewClientDialogContent } from "./new-client-dialog-content";
 
 export function Header() {
   return (
@@ -7,7 +9,15 @@ export function Header() {
         GESTÃO DE CLIENTES
       </h1>
 
-      <Button variant="success">Novo Cliente</Button>
+      <Dialog.Root>
+        <Dialog.Trigger asChild>
+          <Button variant="success">Novo Cliente</Button>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="data-[state=open]:animate-overlayShow fixed inset-0 bg-black/50" />
+          <NewClientDialogContent />
+        </Dialog.Portal>
+      </Dialog.Root>
     </header>
   );
 }

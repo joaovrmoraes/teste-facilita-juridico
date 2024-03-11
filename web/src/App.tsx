@@ -1,5 +1,5 @@
 import { queryClient } from "./libs/react-query";
-import { Home } from "./pages/app/home";
+import { Home } from "./pages/app/home/home";
 import { QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
