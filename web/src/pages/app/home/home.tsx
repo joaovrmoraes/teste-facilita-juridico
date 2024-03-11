@@ -8,6 +8,7 @@ import { Button } from "@/components/button";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 import { RoutesDialogContent } from "@/components/routes-dialog-contet";
+import { SkeletonComponent } from "@/components/skeleton";
 
 export function Home() {
   const { control, watch } = useForm();
@@ -75,8 +76,8 @@ export function Home() {
                 ))}
             </tbody>
           </table>
-
-          {isLoading && <div>Carregando...</div>}
+          
+          {isLoading && <SkeletonComponent />}
         </div>
       </div>
     </>
